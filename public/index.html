@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f9f6f1">
+  <meta name="description" content="Plan weddings, birthdays and community events with AI-powered budgets, timelines, checklists and personal ideas.">
+  <title>Gatherly AI — Make the moment happen</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Gatherly AI home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M18 3.5 21.6 12l9.1-2.7-5.4 7.8 7.1 6-9.4.1L20 32l-4.8-8.1-9.1 2.4 5.1-7.6-7-6.2 9.4.1z" fill="currentColor"/><circle cx="18" cy="18" r="4.1" fill="#fff"/></svg></span>
+        <span>gatherly<span class="brand-ai">AI</span></span>
+      </a>
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="#planner">Planner</a>
+        <a href="#how-it-works">How it works</a>
+      </nav>
+      <div class="top-actions">
+        <span class="ai-status"><span class="status-dot" id="statusDot"></span><span id="statusLabel">Checking AI…</span></span>
+        <button class="button button-small button-dark" id="jumpToPlanner">Plan an event <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-spark">✳</span> LESS STRESS. MORE CELEBRATION.</div>
+          <h1>Make room for<br><span>the moment.</span></h1>
+          <p class="hero-description">Your event, thoughtfully planned. Turn a few details into a budget-aware plan, a clear timeline and those personal touches people remember.</p>
+          <div class="hero-ctas">
+            <a class="button button-primary" href="#planner">Build my event plan <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-proof"><div class="avatar-stack" aria-hidden="true"><span>✦</span><span>♡</span><span>✿</span></div><span>From big milestones to little get-togethers.</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Illustration of a thoughtfully planned celebration">
+          <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+          <div class="float-tag tag-top"><span>✦</span> Your ideas, organized</div>
+          <div class="illustration-card">
+            <div class="ill-topline"><span>YOUR DAY, YOUR WAY</span><span>✳</span></div>
+            <div class="party-illustration">
+              <div class="sun-disc"></div>
+              <div class="string-lights"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="plant plant-left"><i></i><i></i><i></i><b></b></div>
+              <div class="plant plant-right"><i></i><i></i><i></i><b></b></div>
+              <div class="table"><div class="tablecloth"></div><div class="vase"><i></i><i></i><i></i><b></b></div><div class="plate plate-one"></div><div class="plate plate-two"></div></div>
+              <div class="candle candle-one"><i></i></div><div class="candle candle-two"><i></i></div>
+              <div class="gift gift-one"></div><div class="gift gift-two"></div>
+              <div class="confetti c1">✦</div><div class="confetti c2">✳</div><div class="confetti c3">•</div><div class="confetti c4">✦</div>
+            </div>
+            <div class="ill-card-bottom"><div><strong>All the little details.</strong><span>One lovely plan.</span></div><span class="checkmark">✓</span></div>
+          </div>
+          <div class="float-tag tag-bottom"><span class="mini-check">✓</span> Budget in balance</div>
+          <span class="hero-star star-one">✳</span><span class="hero-star star-two">✦</span>
+        </div>
+        <div class="hero-bottom-note"><span class="scroll-line"></span> START WITH WHAT YOU'RE CELEBRATING</div>
+      </section>
+
+      <section class="planner-section" id="planner">
+        <div class="section-heading">
+          <div><div class="eyebrow">YOUR PLANNING SPACE</div><h2>Let's make it <em>happen.</em></h2></div>
+          <p>A few details help us build a plan that fits your people, priorities and pocket.</p>
+        </div>
+        <div class="planner-layout">
+          <section class="form-panel panel" aria-labelledby="formTitle">
+            <div class="panel-heading"><div class="step-number">01</div><div><h3 id="formTitle">Tell us about your event</h3><p>Start with the essentials. You can refine the plan later.</p></div></div>
+            <form id="plannerForm">
+              <div class="field-group">
+                <label for="eventName">What are we celebrating?</label>
+                <input id="eventName" name="eventName" type="text" maxlength="80" placeholder="e.g. Mira's garden birthday" value="My unforgettable celebration" required>
+              </div>
+              <div class="field-grid two-col">
+                <div class="field-group"><label for="eventType">Event type</label><select id="eventType" name="eventType"><option>Birthday</option><option>Wedding</option><option>Community event</option><option>Corporate event</option><option>Graduation</option><option>Baby shower</option><option>Anniversary</option><option>Other</option></select></div>
+                <div class="field-group"><label for="date">Event date <span class="optional">(optional)</span></label><input id="date" name="date" type="date"></div>
+              </div>
+              <div class="field-group"><label for="location">Where will it happen?</label><div class="input-with-icon"><span aria-hidden="true">⌖</span><input id="location" name="location" type="text" maxlength="100" placeholder="City, venue or neighbourhood"></div></div>
+              <div class="field-grid budget-guests">
+                <div class="field-group"><label for="budget">What's your total budget?</label><div class="money-input"><select id="currency" name="currency" aria-label="Currency"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="GBP">£ GBP</option><option value="EUR">€ EUR</option><option value="AED">د.إ AED</option></select><input id="budget" name="budget" type="number" min="100" max="1000000000" value="50000" step="100" required></div><span class="field-hint">Include all planned costs.</span></div>
+                <div class="field-group"><label for="guests">How many guests?</label><div class="number-input"><input id="guests" name="guests" type="number" min="1" max="10000" value="40" required><span>people</span></div><span class="field-hint">A best estimate is fine.</span></div>
+              </div>
+              <div class="field-grid two-col">
+                <div class="field-group"><label for="vibe">What's the vibe?</label><select id="vibe" name="vibe"><option>Warm and memorable</option><option>Elegant and timeless</option><option>Playful and colorful</option><option>Minimal and modern</option><option>Outdoor and relaxed</option><option>Community-first</option><option>Formal and polished</option><option>Festive and high-energy</option></select></div>
+                <div class="field-group"><label for="duration">Event duration</label><select id="duration" name="duration"><option>2 hours</option><option>3 hours</option><option selected>4 hours</option><option>6 hours</option><option>Full day</option><option>Weekend</option></select></div>
+              </div>
+              <div class="field-group"><label for="priorities">What matters most? <span class="optional">(optional)</span></label><input id="priorities" name="priorities" maxlength="250" placeholder="e.g. great food, photos, keeping costs low"></div>
+              <div class="field-group"><label for="preferences">Anything we should keep in mind? <span class="optional">(optional)</span></label><textarea id="preferences" name="preferences" maxlength="500" rows="3" placeholder="Dietary needs, accessibility, age range, weather backup, traditions…"></textarea><span class="field-hint">Share only details useful for planning.</span></div>
+              <div class="form-footnote"><span class="sparkle-icon">✧</span><span>We'll turn your details into a budget, running order, supplier checklist and thoughtful ideas.</span></div>
+              <button class="button button-primary button-full" id="generateButton" type="submit"><span class="button-sparkle">✦</span><span id="generateLabel">Create my event plan</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+              <p class="form-error" id="formError" role="alert" hidden></p>
+            </form>
+          </section>
+
+          <aside class="side-column">
+            <section class="why-card panel">
+              <div class="why-icon">✳</div><div class="eyebrow">BUILT AROUND YOU</div><h3>A good plan feels like <em>you.</em></h3><p>Less time juggling tabs. More time enjoying why everyone is getting together.</p>
+              <div class="feature-list"><div><span class="feature-icon feature-peach">↗</span><div><strong>Budget, without guesswork</strong><small>See the big costs and where to save.</small></div></div><div><span class="feature-icon feature-lilac">☷</span><div><strong>A timeline that flows</strong><small>Know what happens before and on the day.</small></div></div><div><span class="feature-icon feature-mint">✧</span><div><strong>Personal touches</strong><small>Ideas shaped around your event and guests.</small></div></div></div>
+              <div class="note-strip"><span>✦</span><span>Planning estimates are a starting point—not supplier quotes.</span></div>
+            </section>
+            <section class="saved-panel panel" id="savedPanel"><div class="saved-heading"><div><span class="eyebrow">YOUR WORKSPACE</span><h3>Saved plans <span class="saved-count" id="savedCount">0</span></h3></div><button class="icon-button" id="clearSaved" type="button" aria-label="Clear saved plans" title="Clear saved plans">↻</button></div><div class="saved-empty" id="savedEmpty"><span class="empty-icon">♡</span><p>Your plans will live here.</p><small>Save a plan to pick up where you left off.</small></div><div class="saved-list" id="savedList"></div></section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="results-section" id="resultsSection" hidden>
+        <div class="results-header"><div><div class="eyebrow">YOUR EVENT BLUEPRINT</div><h2 id="resultTitle">Your plan is ready.</h2><p id="resultTagline" class="result-tagline"></p></div><div class="result-actions"><button class="button button-outline" id="savePlanButton" type="button">♡ Save plan</button><button class="button button-dark" id="exportPlanButton" type="button">Export plan <span aria-hidden="true">↓</span></button></div></div>
+        <div class="notice-banner" id="planNotice" role="status"><span>✦</span><span id="planNoticeText"></span></div>
+        <div class="overview-card panel"><div class="overview-copy"><span class="eyebrow">THE BIG PICTURE</span><h3>A celebration with a plan.</h3><p id="resultSummary"></p></div><div class="overview-stats"><div><span>Budget</span><strong id="statBudget">—</strong></div><div><span>Guest list</span><strong id="statGuests">—</strong></div><div><span>Event length</span><strong id="statDuration">—</strong></div></div></div>
+        <div class="results-grid">
+          <section class="result-card panel budget-card"><div class="result-card-heading"><div class="result-icon peach-icon">₹</div><div><span class="eyebrow">01 / THE NUMBERS</span><h3>Budget breakdown</h3></div></div><p class="card-intro">A suggested way to put your budget to work.</p><div class="budget-total-line"><span>Total planned spend</span><strong id="budgetTotal">—</strong></div><div class="budget-bars" id="budgetBars"></div><p class="tiny-note">Amounts are estimates. Get itemized quotes and keep your reserve for unexpected costs.</p></section>
+          <section class="result-card panel ideas-card"><div class="result-card-heading"><div class="result-icon lilac-icon">✧</div><div><span class="eyebrow">02 / THE PERSONAL TOUCH</span><h3>Ideas to make it yours</h3></div></div><p class="card-intro">Small details can become the moments people remember.</p><div class="ideas-list" id="ideasList"></div><div class="saving-tips"><h4><span>✳</span> Spend thoughtfully</h4><ul id="savingTips"></ul></div></section>
+          <section class="result-card panel timeline-card"><div class="result-card-heading"><div class="result-icon mint-icon">◷</div><div><span class="eyebrow">03 / THE FLOW</span><h3>Event-day timeline</h3></div></div><p class="card-intro">Adjust these time markers to your actual start time.</p><div class="timeline-list" id="eventTimeline"></div><div class="milestones-block"><h4>Before the big day</h4><div id="milestonesList" class="milestones-list"></div></div></section>
+          <section class="result-card panel vendors-card"><div class="result-card-heading"><div class="result-icon yellow-icon">☷</div><div><span class="eyebrow">04 / THE PEOPLE & DETAILS</span><h3>Vendor checklist</h3></div></div><p class="card-intro">Use these prompts to compare vendors—not just prices.</p><div class="vendor-list" id="vendorList"></div></section>
+          <section class="result-card panel checklist-card"><div class="result-card-heading"><div class="result-icon blue-icon">✓</div><div><span class="eyebrow">05 / ONE THING AT A TIME</span><h3>Your planning checklist</h3></div></div><div class="checklist-progress"><div class="progress-track"><span id="checklistProgressBar"></span></div><span id="checklistProgressText">0 of 0 complete</span></div><div class="task-list" id="taskList"></div></section>
+        </div>
+        <div class="bottom-cta"><div><span class="eyebrow">READY WHEN YOU ARE</span><h3>Good plans leave room for <em>magic.</em></h3><p>Save this blueprint, share it with your helpers and keep the focus on the people you're bringing together.</p></div><button class="button button-primary" id="backToForm" type="button">Refine my plan <span aria-hidden="true">↗</span></button></div>
+      </section>
+
+      <section class="how-section" id="how-it-works"><div class="section-heading"><div><div class="eyebrow">A CALMER WAY TO PLAN</div><h2>From idea to <em>it's happening.</em></h2></div><p>Thoughtful structure makes room for the good stuff.</p></div><div class="how-grid"><article class="how-card"><span class="how-number">01</span><div class="how-illustration form-illustration"><span>✎</span><i></i><i></i><i></i></div><h3>Tell us the basics</h3><p>Share your budget, guest count, occasion and the kind of feeling you want.</p></article><article class="how-card"><span class="how-number">02</span><div class="how-illustration sparkle-illustration"><span>✦</span><i>✧</i><b>✳</b></div><h3>Get a clear blueprint</h3><p>Gatherly creates an organized starting point: cost allocations, schedule and supplier prompts.</p></article><article class="how-card"><span class="how-number">03</span><div class="how-illustration check-illustration"><span>✓</span><i>✓</i><i>✓</i></div><h3>Make it yours</h3><p>Tick off tasks, save the plan and export it to share with your event helpers.</p></article></div></section>
+    </main>
+    <footer class="footer"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span><span>gatherly<span class="brand-ai">AI</span></span></a><p>Made for the moments that bring us together.</p><div><a href="#planner">Plan an event</a><span>© <span id="year"></span> Gatherly AI</span></div></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <template id="unusedTemplate"><div></div></template>
+</body>
+</html>
